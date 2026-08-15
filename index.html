@@ -479,7 +479,10 @@
 
   document.querySelectorAll('video[data-cld-video]').forEach(function(v){
     var id = v.getAttribute('data-cld-video');
-    if(CLOUDINARY_VIDEOS[id]){ v.querySelector('source').src = CLOUDINARY_VIDEOS[id]; }
+    if(CLOUDINARY_VIDEOS[id]){
+      v.querySelector('source').src = CLOUDINARY_VIDEOS[id];
+      v.load(); // fuerza al navegador a recargar con la nueva fuente
+    }
   });
   document.querySelectorAll('.expand-btn[data-cld-video]').forEach(function(b){
     var id = b.getAttribute('data-cld-video');

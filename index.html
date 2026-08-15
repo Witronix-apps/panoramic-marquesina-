@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuestas de Iluminación — Marquesina de Ingreso | Edificio Panoramic</title>
+<meta name="description" content="Cuatro propuestas de iluminación para la marquesina del ingreso del Edificio Panoramic. Witronix — iluminación LED y automatización.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:            #121926;
+    --bg-soft:       #161e2c;
+    --panel:         #1a2333;
+    --panel-border:  #2b3648;
+    --line:          #263048;
+    --text:          #f3f5f7;
+    --text-dim:      #a7b1c2;
+    --text-faint:    #717d90;
+    --brand:         #4C8CFF;
+    --brand-dim:     #2c4d94;
+    --glow:          #f0b153;
+    --radius:         14px;
+    --radius-sm:      9px;
+    --maxw:          1000px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 480px at 50% -120px, #1e2a40 0%, var(--bg) 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Poppins',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:'Montserrat',sans-serif; }
+  ::selection{ background:var(--brand-dim); color:#fff; }
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:14px 24px;
+    background:rgba(18,25,38,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand img{ height:22px; display:block; }
+  .brand-sep{ width:1px; height:18px; background:var(--line); }
+  .brand-project{
+    font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--text-dim); white-space:nowrap;
+  }
+  .jumpnav{
+    display:flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg, rgba(76,140,255,0.14), rgba(76,140,255,0.04));
+    border:1px solid rgba(76,140,255,0.35);
+    padding:6px 8px 6px 14px; border-radius:30px;
+  }
+  .jumpnav-label{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.68rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:#cfe0ff; white-space:nowrap;
+  }
+  .jumpnav-label svg{ width:13px; height:13px; }
+  .pills{ display:flex; gap:6px; }
+  .jumpnav a{
+    position:relative;
+    width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.76rem;
+    background:var(--bg); border:1px solid rgba(76,140,255,0.3);
+    color:var(--text-dim); text-decoration:none;
+    transition:all .18s ease;
+  }
+  .jumpnav a:hover{ color:#fff; background:var(--brand); border-color:var(--brand);
+    transform:translateY(-1px); box-shadow:0 4px 14px rgba(76,140,255,0.45); }
+  .jumpnav a:first-child::after{
+    content:""; position:absolute; inset:-4px; border-radius:50%;
+    border:1.5px solid var(--brand); opacity:0.55;
+    animation:pulseRing 2.2s ease-out infinite;
+  }
+  @keyframes pulseRing{
+    0%{ transform:scale(0.85); opacity:0.6; }
+    70%{ transform:scale(1.35); opacity:0; }
+    100%{ opacity:0; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ max-width:var(--maxw); margin:0 auto; padding:64px 24px 34px; text-align:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--glow); font-weight:600; margin-bottom:18px;
+    font-family:'Montserrat',sans-serif;
+  }
+  .eyebrow::before,.eyebrow::after{ content:""; width:22px; height:1px; background:rgba(240,177,83,0.45); }
+  .hero h1{
+    font-size:clamp(1.85rem, 4.2vw, 3rem);
+    font-weight:800; line-height:1.14; margin:0 0 16px; letter-spacing:-0.01em;
+  }
+  .hero h1 span{ color:var(--brand); }
+  .hero p.lead{
+    max-width:660px; margin:0 auto; color:var(--text-dim);
+    font-size:1.02rem; line-height:1.68; font-weight:300;
+  }
+
+  /* ---------- Context banner ---------- */
+  .context{ max-width:var(--maxw); margin:0 auto 46px; padding:0 24px; }
+  .context-inner{
+    display:flex; align-items:flex-start; gap:14px;
+    background:linear-gradient(135deg, rgba(76,140,255,0.10), rgba(76,140,255,0.03));
+    border:1px solid rgba(76,140,255,0.28);
+    border-radius:var(--radius); padding:18px 20px;
+  }
+  .context-inner svg{ flex:none; width:20px; height:20px; color:var(--brand); margin-top:2px; }
+  .context-inner p{ margin:0; font-size:0.9rem; line-height:1.65; color:#cbd6e6; font-weight:300; }
+  .context-inner strong{ color:#fff; font-weight:600; }
+
+  /* ---------- Cards ---------- */
+  .proposals{ max-width:var(--maxw); margin:0 auto; padding:0 24px 40px; display:flex; flex-direction:column; gap:30px; }
+  .card{
+    scroll-margin-top:80px;
+    background:linear-gradient(180deg, var(--panel) 0%, var(--bg-soft) 100%);
+    border:1px solid var(--panel-border); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .card-head{ display:flex; align-items:center; gap:14px; padding:20px 22px 0; }
+  .card-num{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--panel-border);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Montserrat',sans-serif; font-weight:800; font-size:0.95rem; color:var(--brand);
+  }
+  .card-kicker{
+    display:block; font-family:'Montserrat',sans-serif; font-size:0.68rem; font-weight:700;
+    letter-spacing:0.09em; text-transform:uppercase; color:var(--text-faint); margin-bottom:4px;
+  }
+  .card-head h2{ font-size:1.2rem; font-weight:700; margin:0; color:#fff; letter-spacing:-0.01em; }
+
+  .video-wrap{
+    position:relative; margin:16px 22px 0;
+    border-radius:var(--radius-sm); overflow:hidden;
+    background:#000; aspect-ratio:16/9; border:1px solid var(--line);
+  }
+  .video-wrap video{ width:100%; height:100%; display:block; object-fit:contain; background:#000; }
+  .expand-btn{
+    position:absolute; top:12px; right:12px; z-index:5;
+    width:36px; height:36px; border-radius:8px;
+    background:rgba(18,25,38,0.72); border:1px solid rgba(255,255,255,0.14);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:#fff; backdrop-filter:blur(4px);
+    transition:background .15s ease, transform .15s ease;
+  }
+  .expand-btn:hover{ background:rgba(76,140,255,0.9); transform:scale(1.06); }
+  .expand-btn svg{ width:16px; height:16px; }
+
+  .card-body{ padding:18px 22px 24px; display:grid; grid-template-columns:1fr 230px; gap:22px; align-items:start; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:0.02em; text-transform:uppercase;
+    background:var(--bg); border:1px solid var(--panel-border);
+    color:var(--text-dim); padding:6px 10px; border-radius:20px;
+  }
+  .chip .dot{ width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; }
+  .chip.glow .dot{ background:var(--glow); }
+  .desc{ color:#d3d9e0; font-size:0.94rem; line-height:1.72; font-weight:300; margin:0; }
+  .desc + .desc{ margin-top:12px; }
+
+  .prod{
+    background:var(--bg); border:1px solid var(--panel-border);
+    border-radius:var(--radius-sm); padding:12px; text-align:center;
+  }
+  .prod img{ width:100%; height:auto; border-radius:6px; display:block; }
+  .prod figcaption{
+    margin-top:9px; font-size:0.68rem; line-height:1.45; color:var(--text-faint);
+    font-family:'Montserrat',sans-serif; font-weight:600;
+    letter-spacing:0.05em; text-transform:uppercase;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--line); margin-top:20px; padding:44px 24px 30px; }
+  .footer-inner{
+    max-width:var(--maxw); margin:0 auto;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .footer-brand{ display:flex; align-items:center; gap:12px; }
+  .footer-brand img{ height:20px; }
+  .footer-brand .txt{ font-size:0.78rem; color:var(--text-faint); line-height:1.5; }
+  .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--brand); color:#fff; text-decoration:none;
+    font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.82rem;
+    padding:11px 18px; border-radius:30px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(76,140,255,0.35); }
+  .cta svg{ width:15px; height:15px; }
+  .footer-copy{
+    max-width:var(--maxw); margin:26px auto 0; padding-top:18px; border-top:1px solid var(--line);
+    font-size:0.74rem; color:var(--text-faint);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+  .footer-copy a{ color:var(--text-faint); text-decoration:underline; text-underline-offset:2px; }
+  .footer-copy a:hover{ color:var(--text-dim); }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:100; background:rgba(9,13,20,0.95);
+    display:none; align-items:center; justify-content:center; padding:min(6vh,60px) 20px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox-inner{ width:100%; max-width:1200px; }
+  .lightbox video{ width:100%; max-height:84vh; border-radius:10px; background:#000; display:block; }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px; width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18);
+    color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.14); }
+  .lightbox-close svg{ width:18px; height:18px; }
+  .lightbox-title{
+    color:var(--text-dim); font-family:'Montserrat',sans-serif; font-size:0.8rem;
+    font-weight:600; text-align:center; margin-top:14px; letter-spacing:0.02em;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .card-body{ grid-template-columns:1fr; }
+    .prod{ max-width:300px; margin:0 auto; }
+  }
+  @media (max-width:720px){
+    .topbar{ padding:10px 12px; gap:8px; }
+    .brand-project{ display:none; }
+    .jumpnav{ padding:5px 6px 5px 10px; gap:6px; }
+    .jumpnav-label{ font-size:0; gap:0; }
+    .jumpnav-label svg{ width:15px; height:15px; }
+    .pills{ gap:4px; }
+    .jumpnav a{ width:24px; height:24px; font-size:0.68rem; }
+    .hero{ padding:44px 18px 26px; }
+    .context{ padding:0 14px; margin-bottom:32px; }
+    .proposals{ padding:0 14px 30px; gap:22px; }
+    .card-head{ padding:16px 16px 0; }
+    .video-wrap{ margin:14px 16px 0; }
+    .card-body{ padding:14px 16px 20px; }
+    .footer-inner,.footer-copy{ justify-content:center; text-align:center; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .jumpnav a:first-child::after{ animation:none; display:none; }
+    .expand-btn,.cta{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="assets/witronix-logo-white.png" alt="Witronix">
+    <div class="brand-sep"></div>
+    <span class="brand-project">Edificio Panoramic · Marquesina</span>
+  </div>
+  <nav class="jumpnav" aria-label="Ir a propuesta">
+    <span class="jumpnav-label">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Elegir propuesta
+    </span>
+    <span class="pills">
+      <a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a>
+    </span>
+  </nav>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">Edificio Panoramic · Constructora Tauro</span>
+  <h1>Cuatro propuestas para la<br><span>marquesina del ingreso</span></h1>
+  <p class="lead">Con los wallwashers en columnas ya definidos, estas simulaciones comparan cuatro maneras de resolver el cielo raso del acceso. Cada una cambia por completo el carácter de la llegada.</p>
+</section>
+
+<section class="context">
+  <div class="context-inner">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p><strong>Base ya aprobada:</strong> los wallwashers sobre las columnas quedan confirmados en las cuatro propuestas. Lo que se define aquí es únicamente el sistema del cielo raso, que es la capa que da identidad y escala al ingreso.</p>
+  </div>
+</section>
+
+<section class="proposals">
+
+  <!-- 1 -->
+  <article class="card" id="p1">
+    <div class="card-head">
+      <div class="card-num">1</div>
+      <div>
+        <span class="card-kicker">Luminaria lineal conectable · Cielo raso</span>
+        <h2>Geometría Continua</h2>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <button class="expand-btn" data-video="assets/techo-1-lineales-conectables.mp4" data-cld-video="techo-1-lineales-conectables" data-title="1 · Geometría Continua — Lineales conectables" aria-label="Ampliar video">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H3v6M15 3h6v6M21 15v6h-6M3 15v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <video controls playsinline preload="metadata" poster="assets/techo-1-poster.jpg" data-cld-video="techo-1-lineales-conectables" data-cld-poster="techo-1-poster">
+        <source src="assets/techo-1-lineales-conectables.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="card-body">
+      <div>
+        <div class="chips">
+          <span class="chip"><span class="dot"></span>Lineal conectable</span>
+          <span class="chip glow"><span class="dot"></span>Figuras rectangulares</span>
+        </div>
+        <p class="desc">La luz deja de ser un accesorio y pasa a ser el dibujo del cielo raso. Los módulos lineales se unen entre sí para trazar rectángulos continuos, sin cortes ni empalmes visibles, que ordenan el volado y le dan una lectura moderna e intencional.</p>
+        <p class="desc">Al ser un sistema conectable, la figura se adapta a la geometría real del ingreso: se pueden agrandar, repetir o reconfigurar los rectángulos sin rehacer la instalación, y la alimentación se resuelve desde un solo punto.</p>
+      </div>
+      <figure class="prod">
+        <img src="assets/prod-1-lineal-conectable.jpg" data-cld-img="prod-1-lineal-conectable" alt="Luminaria lineal LED conectable y su sistema de unión">
+        <figcaption>Módulo lineal y sistema de conexión</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- 2 -->
+  <article class="card" id="p2">
+    <div class="card-head">
+      <div class="card-num">2</div>
+      <div>
+        <span class="card-kicker">Hexágonos de sobreponer · Cielo raso</span>
+        <h2>Panal de Luz</h2>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <button class="expand-btn" data-video="assets/techo-2-hexagonos-sobreponer.mp4" data-cld-video="techo-2-hexagonos-sobreponer" data-title="2 · Panal de Luz — Hexágonos de sobreponer" aria-label="Ampliar video">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H3v6M15 3h6v6M21 15v6h-6M3 15v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <video controls playsinline preload="metadata" poster="assets/techo-2-poster.jpg" data-cld-video="techo-2-hexagonos-sobreponer" data-cld-poster="techo-2-poster">
+        <source src="assets/techo-2-hexagonos-sobreponer.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="card-body">
+      <div>
+        <div class="chips">
+          <span class="chip"><span class="dot"></span>Hexagonal de sobreponer</span>
+          <span class="chip glow"><span class="dot"></span>Agrupaciones modulares</span>
+        </div>
+        <p class="desc">La propuesta con mayor carácter propio. Los hexágonos se agrupan de a dos y de a tres formando un ritmo tipo panal que rompe la ortogonalidad del volado y convierte el cielo raso en el elemento que la gente recuerda del ingreso.</p>
+        <p class="desc">Es un sistema que se arma por combinación: cada agrupación puede tener distinta cantidad de piezas según el tramo, y al ser de sobreponer no requiere intervenir la estructura del cielo raso, lo que simplifica montaje y mantenimiento.</p>
+      </div>
+      <figure class="prod">
+        <img src="assets/prod-2-hexagono.jpg" data-cld-img="prod-2-hexagono" alt="Luminaria hexagonal LED de sobreponer con conector">
+        <figcaption>Módulo hexagonal y conector</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- 3 -->
+  <article class="card" id="p3">
+    <div class="card-head">
+      <div class="card-num">3</div>
+      <div>
+        <span class="card-kicker">Tira LED en perfil · Luz directa</span>
+        <h2>Líneas de Salida</h2>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <button class="expand-btn" data-video="assets/techo-3-tiras-direccion-salida.mp4" data-cld-video="techo-3-tiras-direccion-salida" data-title="3 · Líneas de Salida — Tiras en perfil, luz directa" aria-label="Ampliar video">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H3v6M15 3h6v6M21 15v6h-6M3 15v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <video controls playsinline preload="metadata" poster="assets/techo-3-poster.jpg" data-cld-video="techo-3-tiras-direccion-salida" data-cld-poster="techo-3-poster">
+        <source src="assets/techo-3-tiras-direccion-salida.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="card-body">
+      <div>
+        <div class="chips">
+          <span class="chip"><span class="dot"></span>Tira LED en perfil de aluminio</span>
+          <span class="chip glow"><span class="dot"></span>Luz directa hacia el piso</span>
+        </div>
+        <p class="desc">La más sobria y la más coherente con lo ya aprobado. Las tiras van montadas en perfil de aluminio, rectas y apuntando hacia abajo, orientadas en el mismo sentido que los wallwashers de las columnas.</p>
+        <p class="desc">Esa coincidencia de dirección es el punto clave: al eliminar cualquier línea horizontal, todo el conjunto —columnas y cielo raso— apunta hacia un mismo lado y acompaña el recorrido natural de salida. El resultado es un ingreso ordenado, con una sensación de uniformidad que ninguna de las otras opciones logra.</p>
+      </div>
+      <figure class="prod">
+        <img src="assets/prod-3-perfil-estandar.jpg" data-cld-img="prod-3-perfil-estandar" alt="Perfil de aluminio estándar con difusor y tapas">
+        <figcaption>Perfil de aluminio con difusor</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- 4 -->
+  <article class="card" id="p4">
+    <div class="card-head">
+      <div class="card-num">4</div>
+      <div>
+        <span class="card-kicker">Perfil unidireccional · Luz indirecta</span>
+        <h2>Baño Continuo al Exterior</h2>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <button class="expand-btn" data-video="assets/techo-4-perfil-bano-exterior.mp4" data-cld-video="techo-4-perfil-bano-exterior" data-title="4 · Baño Continuo al Exterior — Perfil unidireccional" aria-label="Ampliar video">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H3v6M15 3h6v6M21 15v6h-6M3 15v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <video controls playsinline preload="metadata" poster="assets/techo-4-poster.jpg" data-cld-video="techo-4-perfil-bano-exterior" data-cld-poster="techo-4-poster">
+        <source src="assets/techo-4-perfil-bano-exterior.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="card-body">
+      <div>
+        <div class="chips">
+          <span class="chip"><span class="dot"></span>Mismo perfil de la fachada</span>
+          <span class="chip glow"><span class="dot"></span>Baño indirecto del cielo raso</span>
+        </div>
+        <p class="desc">Aquí se usa el mismo perfil que llevará la fachada, pero montado de un solo lado: en vez de iluminar hacia abajo, proyecta la luz hacia afuera y baña todo el plano del cielo raso de punta a punta.</p>
+        <p class="desc">Al ser luz indirecta, no hay ningún punto brillante mirando al peatón y el volado se lee como una superficie luminosa completa. Además, al dirigir el haz hacia el exterior, la luz no incide sobre las ventanas: el ingreso gana presencia desde la calle sin generar molestia hacia el interior.</p>
+        <p class="desc">Es también la opción que más continuidad da al proyecto, porque repite en el ingreso el mismo lenguaje de luz que tendrá el edificio en altura.</p>
+      </div>
+      <figure class="prod">
+        <img src="assets/prod-4-perfil-lateral.jpg" data-cld-img="prod-4-perfil-lateral" alt="Perfil LED montado lateralmente bañando la superficie">
+        <figcaption>Perfil en montaje lateral — baño de superficie</figcaption>
+      </figure>
+    </div>
+  </article>
+
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/witronix-logo-white.png" alt="Witronix">
+      <span class="txt">Iluminación LED y automatización de edificios<br>La Paz, Bolivia</span>
+    </div>
+    <a class="cta" href="https://wa.me/59162485741?text=Hola%2C%20quiero%20conversar%20sobre%20las%20propuestas%20de%20iluminaci%C3%B3n%20de%20la%20marquesina%20del%20Edificio%20Panoramic" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.4 3.8 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.5-.6 1.6-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+      Solicitar cotización
+    </a>
+  </div>
+  <div class="footer-copy">
+    <span>© 2026 Witronix. Simulación de estudio luminotécnico — Edificio Panoramic, Constructora Tauro.</span>
+    <a href="https://witronixled.com" target="_blank" rel="noopener">witronixled.com</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="lightbox-inner">
+    <video id="lightboxVideo" controls playsinline autoplay></video>
+    <p class="lightbox-title" id="lightboxTitle"></p>
+  </div>
+</div>
+
+<script>
+  // ======================================================================
+  // Videos en máxima calidad servidos desde Cloudinary.
+  // Cada URL es exacta (copiada del Media Library) — si en el futuro subes
+  // un video nuevo, reemplaza aquí su URL completa, incluido el número
+  // de versión "vNNNNNNN" que Cloudinary asigna.
+  // ======================================================================
+  var CLOUDINARY_VIDEOS = {
+    "techo-1-lineales-conectables":
+      "https://res.cloudinary.com/xwvlgym9/video/upload/f_auto,q_auto/v1786811026/Prop_1._lineales_conectables.mp4",
+    "techo-2-hexagonos-sobreponer":
+      "https://res.cloudinary.com/xwvlgym9/video/upload/f_auto,q_auto/v1786810984/Prop_2._Hexagonos_de_sobreponer.mp4",
+    "techo-3-tiras-direccion-salida":
+      "https://res.cloudinary.com/xwvlgym9/video/upload/f_auto,q_auto/v1786810994/Prop_3._Tiras_led_sin_perfil___direcci%C3%B3n_salida.mp4",
+    "techo-4-perfil-bano-exterior":
+      "https://res.cloudinary.com/xwvlgym9/video/upload/f_auto,q_auto/v1786811021/Prop_4._tiras_led_con_perfil_luz_indirecta_ba%C3%B1o_hacia_exterior.mp4"
+  };
+  // Los posters e imágenes de producto son livianos: se quedan sirviendo
+  // desde /assets (no necesitan Cloudinary).
+
+  document.querySelectorAll('video[data-cld-video]').forEach(function(v){
+    var id = v.getAttribute('data-cld-video');
+    if(CLOUDINARY_VIDEOS[id]){ v.querySelector('source').src = CLOUDINARY_VIDEOS[id]; }
+  });
+  document.querySelectorAll('.expand-btn[data-cld-video]').forEach(function(b){
+    var id = b.getAttribute('data-cld-video');
+    if(CLOUDINARY_VIDEOS[id]){ b.dataset.video = CLOUDINARY_VIDEOS[id]; }
+  });
+</script>
+
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),
+      lbV=document.getElementById('lightboxVideo'),
+      lbT=document.getElementById('lightboxTitle'),
+      lbC=document.getElementById('lightboxClose');
+
+  function open(src,title,t){
+    lbV.src=src; lbT.textContent=title||'';
+    lb.classList.add('open'); document.body.style.overflow='hidden';
+    if(t){ lbV.currentTime=t; }
+    lbV.play().catch(function(){});
+  }
+  function close(){
+    lbV.pause(); lbV.removeAttribute('src'); lbV.load();
+    lb.classList.remove('open'); document.body.style.overflow='';
+  }
+  document.querySelectorAll('.expand-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.closest('.video-wrap').querySelector('video');
+      open(b.dataset.video,b.dataset.title,v?v.currentTime:0);
+    });
+  });
+  lbC.addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb){ close(); } });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&lb.classList.contains('open')){ close(); }
+  });
+})();
+</script>
+
+</body>
+</html>
